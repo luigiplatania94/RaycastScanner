@@ -1,0 +1,27 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "RaycastScannerPlugin",
+	"Description": "Real-time geometry-based raycast system that gives to the sound designers metrics on the width around the player",
+	"Category": "Audio",
+	"CreatedBy": "Luigi Platania",
+	"CreatedByURL": "https://www.luigiplatania.net/",
+	"DocsURL": "https://github.com/luigiplatania94/RaycastScanner",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "4.26.0",
+	"CanContainContent": false,
+	"IsBetaVersion": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "RaycastScannerPlugin",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		}
+	]
+}
