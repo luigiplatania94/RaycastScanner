@@ -326,6 +326,12 @@ float URaycastBasedScanner::AvarageArrayElements(const float* ArrayOfElements, c
 	return (sum / size);
 }
 
+
+
+/*
+**	Debug
+*/
+
 void URaycastBasedScanner::Debug()
 {
 	// draw circles around the player (Green = Pessimistic. Blue = Optimistic) and draw a sphere on the raycast's starting point. 
@@ -348,8 +354,8 @@ void URaycastBasedScanner::Debug()
 		FString pessimistic = FString::Printf(TEXT("The pessimistic metric is %f"), PessimisticAzimuthValue);
 		if (GEngine)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, UpdateInterval, FColor::Yellow, optimistic);
-			GEngine->AddOnScreenDebugMessage(-1, UpdateInterval, FColor::Yellow, pessimistic);
+			GEngine->AddOnScreenDebugMessage(0, UpdateInterval, FColor::Yellow, optimistic);
+			GEngine->AddOnScreenDebugMessage(1, UpdateInterval, FColor::Yellow, pessimistic);
 		}
 	}
 }
