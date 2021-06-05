@@ -1,4 +1,5 @@
 # RaycastScanner
+Real-time geometry-based raycast system made in 4.26
 
 ![](Documentation/Images/Image01.png)
  
@@ -6,7 +7,6 @@
 https://vimeo.com/557077663
  
 ## Description
-Real-time geometry-based raycast system.
 
 This is an attempt to recreate a Snowdrop Core Module called "BubbleSpace" in Unreal using C++.
 
