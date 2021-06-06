@@ -16,6 +16,9 @@ It can be used by Sound Designers to switch between ambiances, weather, weapon t
 Click here for more info about the original Bubblespace:
 https://www.youtube.com/watch?v=mN56EauPhPQ&t=765s&ab_channel=GDC
 
+DISCLAIMER:
+I'm using built-in array instead of TArrays because I am working on optimising the tool using SIMD intrinsics.
+
 
 ## Supported Engine Versions
 4.26 
@@ -28,3 +31,10 @@ Copy the folders "RaycastScannerPlugin" into the "Plugins" folder of your UE4 pr
 If you don’t have a Plugins folder in your project folder yet, just create one.
 
 You will be able to see it in the Editor only if you toggle the "Show Plugin Content" on the "View Options".
+
+
+## How to contact me
+For any feedback please send me an email: 
+luigiplatania94@gmail.com
+
+My website: https://www.luigiplatania.net/
