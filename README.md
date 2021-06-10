@@ -59,11 +59,15 @@ Go to your Character Bluperint. On the Components tab, click the Add Component b
 Click Raycast Based Scanner to add the Component and notice that the Details window is populated below the Components window.
 
 ### Using a Blueprint Class
-This will allow you to add your unique blueprint logic to the Audio Spline.
+This will allow you to add your unique blueprint logic to the Raycast Based Scanner.
 
-Right click on the C++ Actor and select "Create Blueprint Class based on "Raycast based scanner". 
+Right click on the C++ Actor Component and select "Create Blueprint Class based on "Raycast based scanner". 
 
 Choose a name and a directory for your Blueprint class.
+
+Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+
+Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
 
 
 ## How to contact me
