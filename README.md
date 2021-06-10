@@ -34,7 +34,7 @@ You will be able to see it in the Editor only if you toggle the "Show Plugin Con
 
 
 ## How to use the Plugin
-There are two ways of using this tool. You can simply use the C++ Actor Component or you can create a Blueprint class from the C++ Actor Component.
+There are two ways of using this tool. If you are comfortable with C++ you can simply use the C++ Actor Component, otherwise you can create a Blueprint class from the C++ Actor Component and script your logic with blueprint.
 
 ### Using the C++ Actor Component
 Modify the code to add your own logic. My suggestion would be to set an RTPC everytime the metric is updated (every 16 frames).
@@ -47,7 +47,7 @@ if (PhaseCounter >= 4)
 	// TRUE if 16 frames have passed
 	if (FrameCounter >= 4)
 	{
-		// metric are updated
+		// metrics are updated
 		(...)
 		// Set the RTPC with the updated metrics
 	}
@@ -69,9 +69,24 @@ Open your new Blueprint class and override the function "OnMetricUpdate".
 
 ![](Documentation/Images/Image02.png)
 
+Get the pessimistic and optimistic metric.
+
+![](Documentation/Images/Image03.png)
+
+Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
+
 Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
 
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
+
+
+### Modifying the parameters
+Once you have added the component (either the C++ Actor component or the Blueprint class component) you can modify the parameters of the tool in the details window.
+
+![](Documentation/Images/Image04.png)
+
+#### Range: 
+
 
 
 ## How to contact me
