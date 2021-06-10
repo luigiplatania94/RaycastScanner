@@ -65,6 +65,10 @@ Right click on the C++ Actor Component and select "Create Blueprint Class based 
 
 Choose a name and a directory for your Blueprint class.
 
+Open your new Blueprint class and override the function "OnMetricUpdate".
+
+![](Documentation/Images/Image02.png)
+
 Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
 
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
