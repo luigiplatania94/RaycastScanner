@@ -69,6 +69,10 @@ Open your new Blueprint class and override the function "OnMetricUpdate".
 
 ![](Documentation/Images/Image02.png)
 
+Get the pessimistic and optimistic metric and set the RTPC.
+
+![](Documentation/Images/Image03.png)
+
 Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
 
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
