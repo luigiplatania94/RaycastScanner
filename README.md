@@ -34,7 +34,7 @@ You will be able to see it in the Editor only if you toggle the "Show Plugin Con
 
 
 ## How to use the Plugin
-There are two ways of using this tool. You can simply use the C++ Actor Component or you can create a Blueprint class from the C++ Actor Component.
+There are two ways of using this tool. If you are comfortable with C++ you can simply use the C++ Actor Component, otherwise you can create a Blueprint class from the C++ Actor Component and script your logic with blueprint.
 
 ### Using the C++ Actor Component
 Modify the code to add your own logic. My suggestion would be to set an RTPC everytime the metric is updated (every 16 frames).
