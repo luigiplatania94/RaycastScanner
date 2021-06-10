@@ -47,7 +47,7 @@ if (PhaseCounter >= 4)
 	// TRUE if 16 frames have passed
 	if (FrameCounter >= 4)
 	{
-		// metric are updated
+		// metrics are updated
 		(...)
 		// Set the RTPC with the updated metrics
 	}
