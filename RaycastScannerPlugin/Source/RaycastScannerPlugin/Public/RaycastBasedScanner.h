@@ -24,7 +24,7 @@
 #include "RaycastBasedScanner.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), Blueprintable )
 class RAYCASTSCANNERPLUGIN_API URaycastBasedScanner : public UActorComponent
 {
 	GENERATED_BODY()
@@ -64,29 +64,30 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Raycast-Based Scanner | Debug")
 	bool bDebugMetrics{ false };
 
+	// This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnMetricUpdate();
+
 
 protected:
-	// I use Finish Destroy instead of BeginDestroy because FinishDestroy it's after any async stuff which might still try access the memory.
-	virtual void FinishDestroy() override;
-
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 private:
 	// Find the smallest value of an array
-	float FindSmallestValue(const float* ArrayOfElements, const size_t size) const;
+	float FindSmallestValue(const TArray<float>& ArrayOfElements) const;
 
 	// Average the (size - 1) smallest values of the array
-	float AverageSmallestValues(const float* ArrayOfElements, const size_t size) const;
+	float AverageSmallestValues(const TArray<float>& ArrayOfElements) const;
 
 	// Find the largest value of an array
-	float FindLargestValue(const float* ArrayOfElements, const size_t size) const;
+	float FindLargestValue(const TArray<float>& ArrayOfElements) const;
 
 	// Average the (size - 1) largest values of the array
-	float AverageLargestValues(const float* ArrayOfElements, const size_t size) const;
+	float AverageLargestValues(const TArray<float>& ArrayOfElements) const;
 
 	// Find the avarage of all the elements of the array
-	float AvarageArrayElements(const float* ArrayOfElements, const size_t size) const;
+	float AvarageArrayElements(const TArray<float>& ArrayOfElements) const;
 
 	void Debug();
 
@@ -108,12 +109,9 @@ private:
 	// Raycast start location of the scanner. This can be offset by the user 
 	FVector RayStartLocation;
 
-	// Size of both pessimistic and optimistic four elements short history buffer
-	const size_t PhasesBufferSize{ 4 };
-
-	// These will be four elements short history buffer containing the result of each completed phases
-	float* PessimisticPhasesBuffer;
-	float* OptimisticPhasesBuffer;
+	// These will be four elements short history buffers containing the result of each completed phases
+	TArray<float> PessimisticPhasesBuffer{ 0, 0, 0, 0 };
+	TArray<float> OptimisticPhasesBuffer{ 0, 0, 0, 0 };
 
 	// Used to write avaraged distances of single phases into the PhasesBuffer.
 	// If PhaseCounter >= 4, the system has calculated four phases 
@@ -132,12 +130,11 @@ private:
 	// This is the avarage of the three largest phases
 	float OptimisticTargetValue{ 0.0f };
 
-	const size_t TargetValuesSize{ 4 };
 
 	// These will contain last 4 target values. 
 	// They are used to smooth out the final metric over 16 frames
-	float* PessimisticTargetValues;
-	float* OptimisticTargetValues;
+	TArray<float> PessimisticTargetValues{ 0, 0, 0, 0 };
+	TArray<float> OptimisticTargetValues{ 0, 0, 0, 0 };
 
 	// These are the final metric before mapping the values from 0.0 to 1.0
 	float PessimisticAzimuthValueBeforeMapping{ 0.0f };

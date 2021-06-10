@@ -12,11 +12,6 @@
 
 =============================================================================*/
 
-/*
-**	DISCLAIMER:
-**	I'm using built-in array instead of TArrays because I am working on optimising the tool using SIMD intrinsics
-*/
-
 
 #include "RaycastBasedScanner.h"
 #include "DrawDebugHelpers.h"
@@ -31,39 +26,8 @@ URaycastBasedScanner::URaycastBasedScanner()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
-
-	// Allocate the memory and call the constructor for every arrays used
-	PessimisticPhasesBuffer = new float[PhasesBufferSize] { 0.0f };
-	OptimisticPhasesBuffer = new float[PhasesBufferSize] { 0.0f };
-
-	PessimisticTargetValues = new float[TargetValuesSize] { 0.0f };
-	OptimisticTargetValues = new float[TargetValuesSize] { 0.0f };
 }
 
-// Called to finish destroying the object.
-void URaycastBasedScanner::FinishDestroy()
-{
-	/* 
-	**	Call the destructor and de-allocate the memory for every arrays used
-	**	I use Finish Destroy instead of BeginDestroy because FinishDestroy it's after any async stuff which might still try access the memory.
-	*/
-	delete[] PessimisticPhasesBuffer;
-	PessimisticPhasesBuffer = nullptr;
-
-	delete[] OptimisticPhasesBuffer;
-	OptimisticPhasesBuffer = nullptr;
-
-	delete[] PessimisticTargetValues;
-	PessimisticTargetValues = nullptr;
-
-	delete[] OptimisticTargetValues;
-	OptimisticTargetValues = nullptr;
-
-
-	// Because properties are destroyed here, Super::FinishDestroy() should always be called at the end of your child class's FinishDestroy() method, rather than at the beginning.
-	Super::FinishDestroy();
-}
 
 
 // Called when the game starts
@@ -106,10 +70,9 @@ void URaycastBasedScanner::TickComponent(float DeltaTime, ELevelTick TickType, F
 		// offset the starting point of the raycast
 		RayStartLocation = (FVector::UpVector * StartingPointOffset) + OwnerLocation;
 
-		const size_t DistancesBufferSize{ 3 };
 
 		// Initialise the 3 elements array that will store the distances of a single phase
-		float DistancesBuffer[DistancesBufferSize]{ 0, 0, 0 };
+		TArray<float> DistancesBuffer { 0, 0, 0 };
 
 		// Used to write distances of single raycast into the DistanceBuffer 
 		int DistanceCounter{ 0 };
@@ -159,8 +122,8 @@ void URaycastBasedScanner::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 		// The two shortest distances will be averaged and stored into the PessimisticSinglePhase
 		// The two largest distances will be avaraged and stored into the OptimisticSinglePhase
-		float PessimisticSinglePhase = AverageSmallestValues(DistancesBuffer, DistancesBufferSize);
-		float OptimisticSinglePhase = AverageLargestValues(DistancesBuffer, DistancesBufferSize);
+		float PessimisticSinglePhase = AverageSmallestValues(DistancesBuffer);
+		float OptimisticSinglePhase = AverageLargestValues(DistancesBuffer);
 
 		// new avarages are added to a 4 element short history buffer
 		PessimisticPhasesBuffer[PhaseCounter] = PessimisticSinglePhase;
@@ -176,8 +139,8 @@ void URaycastBasedScanner::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 			// The three shortest phases will be averaged and stored into the PessimisticTargetValue
 			// The three largest phases will be avaraged and stored into the OptimisticTargetValue
-			PessimisticTargetValue = AverageSmallestValues(PessimisticPhasesBuffer, PhasesBufferSize);
-			OptimisticTargetValue = AverageLargestValues(OptimisticPhasesBuffer, PhasesBufferSize);
+			PessimisticTargetValue = AverageSmallestValues(PessimisticPhasesBuffer);
+			OptimisticTargetValue = AverageLargestValues(OptimisticPhasesBuffer);
 
 
 
@@ -190,12 +153,18 @@ void URaycastBasedScanner::TickComponent(float DeltaTime, ELevelTick TickType, F
 			if (FrameCounter >= 4)
 			{
 				// Smooth out the values over 16 frames
-				PessimisticAzimuthValueBeforeMapping = AvarageArrayElements(PessimisticTargetValues, TargetValuesSize);
-				OptimisticAzimuthValueBeforeMapping = AvarageArrayElements(OptimisticTargetValues, TargetValuesSize);
+				PessimisticAzimuthValueBeforeMapping = AvarageArrayElements(PessimisticTargetValues);
+				OptimisticAzimuthValueBeforeMapping = AvarageArrayElements(OptimisticTargetValues);
 
 				// Map the value into a range from 0 to 1
 				PessimisticAzimuthValue = PessimisticAzimuthValueBeforeMapping / AzimuthRayLength;
 				OptimisticAzimuthValue = OptimisticAzimuthValueBeforeMapping / AzimuthRayLength;
+
+				// SET THE RTPC ON YOUR MIDDLEWARE HERE
+				// (...)
+				// or alternatevely...
+				// this will allow the sound designer to set an RTPC on the Blueprint child of these actor component just by overriding this event.
+				OnMetricUpdate();
 
 				// reset the counter
 				FrameCounter = 0;
@@ -226,20 +195,19 @@ void URaycastBasedScanner::TickComponent(float DeltaTime, ELevelTick TickType, F
 /*
 **	Find the smallest value of an array
 */
-float URaycastBasedScanner::FindSmallestValue(const float* ArrayOfElements, const size_t size) const
+float URaycastBasedScanner::FindSmallestValue(const TArray<float>& ArrayOfElements) const
 {
+
 	// Initialise the first value to zero
 	float Smallest{ FLT_MAX };
 
-
-	for (int i{ 0 }; i < size; i++)
+	for (int i{ 0 }; i < ArrayOfElements.Num(); i++)
 	{
 		// If current element is greater than first then update both first and second 
 		if (ArrayOfElements[i] < Smallest)
 		{
 			Smallest = ArrayOfElements[i];
 		}
-
 	}
 
 	return Smallest;
@@ -250,18 +218,16 @@ float URaycastBasedScanner::FindSmallestValue(const float* ArrayOfElements, cons
 /*
 **	Find the smallest values (size - 1) of an array and calculate the avarage
 */
-float URaycastBasedScanner::AverageSmallestValues(const float* ArrayOfElements, const size_t size) const
-{
+float URaycastBasedScanner::AverageSmallestValues(const TArray<float>& ArrayOfElements) const
+{	
 	float sum{ 0.0f };
 
-	for (int i{ 0 }; i < size; i++)
+	for (int i{ 0 }; i < ArrayOfElements.Num(); i++)
 	{
 		sum += ArrayOfElements[i];
 	}
 
-
-	float average = (sum - FindLargestValue(ArrayOfElements, size)) / (size - 1);
-
+	float average = (sum - FindLargestValue(ArrayOfElements)) / (ArrayOfElements.Num() - 1);
 
 	return average;
 }
@@ -271,13 +237,13 @@ float URaycastBasedScanner::AverageSmallestValues(const float* ArrayOfElements, 
 /*
 **	Find the largest value of an array 
 */
-float URaycastBasedScanner::FindLargestValue(const float* ArrayOfElements, const size_t size) const
+float URaycastBasedScanner::FindLargestValue(const TArray<float>& ArrayOfElements) const
 {
 	// Initialise the first value to zero
 	float Largest{ 0.0f };
 
 
-	for (int i{ 0 }; i < size; i++)
+	for (int i{ 0 }; i < ArrayOfElements.Num(); i++)
 	{
 		// If current element is greater than first then update both first and second 
 		if (ArrayOfElements[i] > Largest)
@@ -295,16 +261,16 @@ float URaycastBasedScanner::FindLargestValue(const float* ArrayOfElements, const
 /*
 **	Find the largest values (size - 1) of an array and calculate the avarage 
 */
-float URaycastBasedScanner::AverageLargestValues(const float* ArrayOfElements, const size_t size) const
+float URaycastBasedScanner::AverageLargestValues(const TArray<float>& ArrayOfElements) const
 {
 	float sum{ 0.0f };
 
-	for (int i{ 0 }; i < size; i++)
+	for (int i{ 0 }; i < ArrayOfElements.Num(); i++)
 	{
 		sum += ArrayOfElements[i];
 	}
 
-	float average = (sum - FindSmallestValue(ArrayOfElements, size)) / (size - 1);
+	float average = (sum - FindSmallestValue(ArrayOfElements)) / (ArrayOfElements.Num() - 1);
 
 	return average;
 }
@@ -314,16 +280,17 @@ float URaycastBasedScanner::AverageLargestValues(const float* ArrayOfElements, c
 /*
 **	Find the avarage all the elements contained into an array
 */
-float URaycastBasedScanner::AvarageArrayElements(const float* ArrayOfElements, const size_t size) const
+float URaycastBasedScanner::AvarageArrayElements(const TArray<float>& ArrayOfElements) const
 {
+
 	float sum{ 0 };
 
-	for (int i{ 0 }; i < size; i++)
+	for (int i{ 0 }; i < ArrayOfElements.Num(); i++)
 	{
 		sum += ArrayOfElements[i];
 	}
 
-	return (sum / size);
+	return (sum / ArrayOfElements.Num());
 }
 
 

@@ -19,8 +19,37 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 	UPackage* Z_Construct_UPackage__Script_RaycastScannerPlugin();
 	ENGINE_API UEnum* Z_Construct_UEnum_Engine_ECollisionChannel();
 // End Cross Module References
+	static FName NAME_URaycastBasedScanner_OnMetricUpdate = FName(TEXT("OnMetricUpdate"));
+	void URaycastBasedScanner::OnMetricUpdate()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_URaycastBasedScanner_OnMetricUpdate),NULL);
+	}
 	void URaycastBasedScanner::StaticRegisterNativesURaycastBasedScanner()
 	{
+	}
+	struct Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "// This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.\n" },
+		{ "ModuleRelativePath", "Public/RaycastBasedScanner.h" },
+		{ "ToolTip", "This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics." },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_URaycastBasedScanner, nullptr, "OnMetricUpdate", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_URaycastBasedScanner_NoRegister()
 	{
@@ -29,6 +58,7 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 	struct Z_Construct_UClass_URaycastBasedScanner_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -78,11 +108,16 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 		(UObject* (*)())Z_Construct_UClass_UActorComponent,
 		(UObject* (*)())Z_Construct_UPackage__Script_RaycastScannerPlugin,
 	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_URaycastBasedScanner_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate, "OnMetricUpdate" }, // 1684426299
+	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_URaycastBasedScanner_Statics::Class_MetaDataParams[] = {
 		{ "BlueprintSpawnableComponent", "" },
+		{ "BlueprintType", "true" },
 		{ "ClassGroupNames", "Custom" },
 		{ "IncludePath", "RaycastBasedScanner.h" },
+		{ "IsBlueprintBase", "true" },
 		{ "ModuleRelativePath", "Public/RaycastBasedScanner.h" },
 	};
 #endif
@@ -196,11 +231,11 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_URaycastBasedScanner_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_URaycastBasedScanner_Statics::PropPointers),
 		0,
 		0x00B000A4u,
@@ -215,7 +250,7 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(URaycastBasedScanner, 2972979358);
+	IMPLEMENT_CLASS(URaycastBasedScanner, 1628407693);
 	template<> RAYCASTSCANNERPLUGIN_API UClass* StaticClass<URaycastBasedScanner>()
 	{
 		return URaycastBasedScanner::StaticClass();

@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeRaycastScannerPlugin_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x8B8DA09E,
+				0xE6DCBFA8,
 				0xB12D911B,
 				METADATA_PARAMS(nullptr, 0)
 			};
