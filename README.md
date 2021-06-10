@@ -83,7 +83,7 @@ Click the new Blueprint Class that you have created to add the Component and not
 ### Modifying the parameters
 Once you have added the component (either the C++ Actor component or the Blueprint class component) you can modify the parameters of the tool in the details window.
 
-![](Documentation/Images/DetailPanel.png)
+![](Documentation/Images/Image04.png)
 
 #### Range: 
 
