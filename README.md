@@ -85,9 +85,30 @@ Once you have added the component (either the C++ Actor component or the Bluepri
 
 ![](Documentation/Images/Image04.png)
 
-#### Range: 
+#### AzimuthRayLength: 
+Maximum length of the raycast in the azimuth plane. 
+
+This parameter will be the the input max in the mapping range:
+
+target value at given time : AzimuthRayLength = x : 1 
+
+The result would be the final metric. The final metric will be close to 1 if the target value at given time is close (or equal) to the AzimuthRayLength. 
+
+The AzimuthRayLength should be tuned depending on the geometry of map. 
 
 
+#### CollisionChannel
+The users can specify their own collision channel. 
+
+Doing so will allow to ignore specific actors that might be not relevant to the calculation of the metric (a fence for example).
+
+#### UpdateInterval
+User-defined Tick interval. The component tick's interval is overidden.
+
+#### StartingPointOffset
+Offset the height of the starting point of the raycast scanner.
+
+This should be places above the head of the player.
 
 ## How to contact me
 For any feedback please send me an email: 
