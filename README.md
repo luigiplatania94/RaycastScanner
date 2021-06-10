@@ -33,6 +33,37 @@ If you don’t have a Plugins folder in your project folder yet, just create one
 You will be able to see it in the Editor only if you toggle the "Show Plugin Content" on the "View Options".
 
 
+## How to use the Plugin
+There are two ways of using this tool. You can simply use the C++ Actor Component or you can create a Blueprint class from the C++ Actor Component.
+
+### Using the C++ Actor Component
+Modify the code to add your own logic. My suggestion would be to set an RTPC everytime the metric is updated (every 16 frames).
+```
+	// TRUE if four completed phases have been completed
+		if (PhaseCounter >= 4)
+		{
+     (...)
+     
+      if (FrameCounter >= 4)
+			   {
+           // metric are updated
+           (...)
+           // Set the RTPC with the updated metrics
+      }
+```
+
+Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+
+Click Raycast Based Scanner to add the Component and notice that the Details window is populated below the Components window.
+
+### Using a Blueprint Class
+This will allow you to add your unique blueprint logic to the Audio Spline.
+
+Right click on the C++ Actor and select "Create Blueprint Class based on "Raycast based scanner". 
+
+Choose a name and a directory for your Blueprint class.
+
+
 ## How to contact me
 For any feedback please send me an email: 
 luigiplatania94@gmail.com
