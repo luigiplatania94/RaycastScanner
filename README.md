@@ -80,6 +80,15 @@ Go to your Character Bluperint. On the Components tab, click the Add Component b
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
 
 
+### Modifying the parameters
+Once you have added the component (either the C++ Actor component or the Blueprint class component) you can modify the parameters of the tool in the details window.
+
+![](Documentation/Images/DetailPanel.png)
+
+#### Range: 
+
+
+
 ## How to contact me
 For any feedback please send me an email: 
 luigiplatania94@gmail.com
