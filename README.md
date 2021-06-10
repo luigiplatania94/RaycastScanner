@@ -39,17 +39,19 @@ There are two ways of using this tool. You can simply use the C++ Actor Componen
 ### Using the C++ Actor Component
 Modify the code to add your own logic. My suggestion would be to set an RTPC everytime the metric is updated (every 16 frames).
 ```
-	// TRUE if four completed phases have been completed
-		if (PhaseCounter >= 4)
-		{
-     (...)
-     
-      if (FrameCounter >= 4)
-			   {
-           // metric are updated
-           (...)
-           // Set the RTPC with the updated metrics
-      }
+// TRUE if four completed phases have been completed
+if (PhaseCounter >= 4)
+{
+	(...)
+
+	// TRUE if 16 frames have passed
+	if (FrameCounter >= 4)
+	{
+		// metric are updated
+		(...)
+		// Set the RTPC with the updated metrics
+	}
+}	
 ```
 
 Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
