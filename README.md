@@ -110,6 +110,20 @@ Offset the height of the starting point of the raycast scanner.
 
 This should be places above the head of the player.
 
+#### Tolerance
+The system does not measure if the parent actor changed it's position within this specified error limits.
+
+This will save some CPU time.
+
+
+#### bDebugVisualisation
+If TRUE draw circles around the player (Green = Pessimistic. Blue = Optimistic) 
+
+Draw a sphere on the raycast's starting point. The sphere is red if the player moved (beyond the tolerance), otherwise is black.
+
+#### bDebugMetrics
+If TRUE print to the screen both the optimistic and pessimistic metric.
+
 ## How to contact me
 For any feedback please send me an email: 
 luigiplatania94@gmail.com
