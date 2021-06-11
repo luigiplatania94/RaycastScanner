@@ -94,7 +94,7 @@ target value at given time : AzimuthRayLength = x : 1
 
 The result would be the final metric. The final metric will be close to 1 if the target value at given time is close (or equal) to the AzimuthRayLength. 
 
-The AzimuthRayLength should be tuned depending on the geometry of map. 
+The AzimuthRayLength should be tuned depending on the geometry of the map. 
 
 
 ### CollisionChannel
