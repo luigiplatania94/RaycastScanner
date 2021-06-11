@@ -108,7 +108,7 @@ User-defined Tick interval. The component tick's interval is overidden.
 ### StartingPointOffset
 Offset the height of the starting point of the raycast scanner.
 
-This should be places above the head of the player.
+This should be placed above the head of the player.
 
 ### Tolerance
 The system does not measure if the parent actor changed it's position within this specified error limits.
