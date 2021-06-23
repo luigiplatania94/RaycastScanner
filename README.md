@@ -55,7 +55,9 @@ if (PhaseCounter >= 4)
 }	
 ```
 
-Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+Once you edited the code, go to your Character Bluperint. 
+
+On the Components tab, click the Add Component button in the Components window.
 
 Click Raycast Based Scanner to add the Component and notice that the Details window is populated below the Components window.
 
@@ -76,7 +78,9 @@ Get the pessimistic and optimistic metric.
 
 Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
 
-Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+Once you created the blueprint, go to your Character Bluperint. 
+
+On the Components tab, click the Add Component button in the Components window.
 
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
 
