@@ -107,13 +107,16 @@ The users can specify their own collision channel.
 
 Doing so will allow to ignore specific actors that might be not relevant to the calculation of the metric (a fence for example).
 
+
 ### UpdateInterval
 User-defined Tick interval. The component tick's interval is overidden.
+
 
 ### StartingPointOffset
 Offset the height of the starting point of the raycast scanner.
 
 This should be placed above the head of the player.
+
 
 ### Tolerance
 The system does not measure if the parent actor changed it's position within this specified error limits.
@@ -124,10 +127,16 @@ This will save some CPU time.
 ### bDebugVisualisation
 If TRUE draw circles around the player (Green = Pessimistic. Blue = Optimistic) 
 
-Draw a sphere on the raycast's starting point. The sphere is red if the player moved (beyond the tolerance), otherwise is black.
+Draw a sphere on the raycast's starting point. 
+
+This sphere is also used to visually see if the tool is calculating or not.
+
+The sphere will be red if the player moves (beyond the tolerance), otherwise will be black.
+
 
 ### bDebugMetrics
 If TRUE print to the screen both the optimistic and pessimistic metric.
+
 
 ## How to contact me
 For any feedback please send me an email: 
