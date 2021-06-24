@@ -1,5 +1,4 @@
 # RaycastScanner
-Real-time geometry-based raycast system made in 4.26
 
 ![](Documentation/Images/Image01.png)
  
