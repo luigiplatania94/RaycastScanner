@@ -9,15 +9,14 @@ https://vimeo.com/557077663
 
 This is an attempt to recreate a Snowdrop Core Module called "BubbleSpace" in Unreal using C++.
 
-It's an Actor Component that returns an average of the width around the player. 
-
-It has both an Optimistic Metric and a Pessimistic Metric.
-
-It can be used by Sound Designers to change ambiances, weather, weapon tails or modify parameters in real-time (for example reverb parameters).
-
 Click here for more info about the original Bubblespace:
 https://www.youtube.com/watch?v=mN56EauPhPQ&t=765s&ab_channel=GDC
 
+RaycastScanner is an Actor Component that returns an average of the width around the player. 
+
+It has both an Optimistic Metric and a Pessimistic Metric for the Azimuth plane.
+
+It can be used by Sound Designers to change dynamically the soundscape (for example ambiances, weather, weapon tails) or to modify parameters in real-time (for example reverb parameters).
 
 
 ## Supported Engine Versions
