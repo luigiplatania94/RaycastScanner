@@ -44,7 +44,7 @@ if (PhaseCounter >= 4)
 	(...)
 
 	// TRUE if 16 frames have passed
-	if (FrameCounter >= 4)
+	if (SmoothCounter >= 4)
 	{
 		// metrics are updated
 		(...)
