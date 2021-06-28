@@ -1,5 +1,4 @@
 # RaycastScanner
-Real-time geometry-based raycast system made in 4.26
 
 ![](Documentation/Images/Image01.png)
  
@@ -10,14 +9,14 @@ https://vimeo.com/557077663
 
 This is an attempt to recreate a Snowdrop Core Module called "BubbleSpace" in Unreal using C++.
 
-It's an Actor Component that returns an average of the width around the player. It has both an Optimistic Metric and a Pessimistic Metric.
-It can be used by Sound Designers to switch between ambiances, weather, weapon tails, modify parameters in real-time (for example reverb parameters).
-
 Click here for more info about the original Bubblespace:
 https://www.youtube.com/watch?v=mN56EauPhPQ&t=765s&ab_channel=GDC
 
-DISCLAIMER:
-I'm using built-in array instead of TArrays because I am working on optimising the tool using SIMD intrinsics.
+RaycastScanner is an Actor Component that returns an average of the width around the player. 
+
+It has both an Optimistic Metric and a Pessimistic Metric for the Azimuth plane.
+
+It can be used by Sound Designers to change dynamically the soundscape (for example ambiances, weather, weapon tails) or to modify parameters in real-time (for example reverb parameters).
 
 
 ## Supported Engine Versions
@@ -45,7 +44,7 @@ if (PhaseCounter >= 4)
 	(...)
 
 	// TRUE if 16 frames have passed
-	if (FrameCounter >= 4)
+	if (SmoothCounter >= 4)
 	{
 		// metrics are updated
 		(...)
@@ -54,7 +53,9 @@ if (PhaseCounter >= 4)
 }	
 ```
 
-Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+Once you edited the code, go to your Character Bluperint. 
+
+On the Components tab, click the Add Component button in the Components window.
 
 Click Raycast Based Scanner to add the Component and notice that the Details window is populated below the Components window.
 
@@ -75,7 +76,9 @@ Get the pessimistic and optimistic metric.
 
 Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
 
-Go to your Character Bluperint. On the Components tab, click the Add Component button in the Components window.
+Once you created the blueprint, go to your Character Bluperint. 
+
+On the Components tab, click the Add Component button in the Components window.
 
 Click the new Blueprint Class that you have created to add the Component and notice that the Details window is populated below the Components window.
 
@@ -85,8 +88,52 @@ Once you have added the component (either the C++ Actor component or the Bluepri
 
 ![](Documentation/Images/Image04.png)
 
-#### Range: 
+### AzimuthRayLength: 
+Maximum length of the raycast in the azimuth plane. 
 
+This parameter will be the the input max in the mapping range:
+
+target value at given time : AzimuthRayLength = x : 1 
+
+The result would be the final metric. The final metric will be close to 1 if the target value at given time is close (or equal) to the AzimuthRayLength. 
+
+The AzimuthRayLength should be tuned depending on the geometry of the map. 
+
+
+### CollisionChannel
+The users can specify their own collision channel. 
+
+Doing so will allow to ignore specific actors that might be not relevant to the calculation of the metric (a fence for example).
+
+
+### UpdateInterval
+User-defined Tick interval. The component tick's interval is overidden.
+
+
+### StartingPointOffset
+Offset the height of the starting point of the raycast scanner.
+
+This should be placed above the head of the player.
+
+
+### Tolerance
+The system does not measure if the parent actor changed it's position within this specified error limits.
+
+This will save some CPU time.
+
+
+### bDebugVisualisation
+If TRUE draw circles around the player (Green = Pessimistic. Blue = Optimistic) 
+
+Draw a sphere on the raycast's starting point. 
+
+This sphere is also used to visually see if the tool is calculating or not.
+
+The sphere will be red if the player moves (beyond the tolerance), otherwise will be black.
+
+
+### bDebugMetrics
+If TRUE print to the screen both the optimistic and pessimistic metric.
 
 
 ## How to contact me
