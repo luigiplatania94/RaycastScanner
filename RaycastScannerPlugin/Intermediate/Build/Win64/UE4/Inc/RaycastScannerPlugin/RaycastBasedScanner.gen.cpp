@@ -36,9 +36,9 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams[] = {
-		{ "Comment", "// This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.\n" },
+		{ "Comment", "// This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.\n// It's not meant to have a definition.\n" },
 		{ "ModuleRelativePath", "Public/RaycastBasedScanner.h" },
-		{ "ToolTip", "This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics." },
+		{ "ToolTip", "This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.\nIt's not meant to have a definition." },
 	};
 #endif
 	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_URaycastBasedScanner, nullptr, "OnMetricUpdate", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08020800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate_Statics::Function_MetaDataParams)) };
@@ -109,7 +109,7 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_RaycastScannerPlugin,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_URaycastBasedScanner_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate, "OnMetricUpdate" }, // 1684426299
+		{ &Z_Construct_UFunction_URaycastBasedScanner_OnMetricUpdate, "OnMetricUpdate" }, // 788872665
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_URaycastBasedScanner_Statics::Class_MetaDataParams[] = {
@@ -250,7 +250,7 @@ void EmptyLinkFunctionForGeneratedCodeRaycastBasedScanner() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(URaycastBasedScanner, 1628407693);
+	IMPLEMENT_CLASS(URaycastBasedScanner, 3724896373);
 	template<> RAYCASTSCANNERPLUGIN_API UClass* StaticClass<URaycastBasedScanner>()
 	{
 		return URaycastBasedScanner::StaticClass();

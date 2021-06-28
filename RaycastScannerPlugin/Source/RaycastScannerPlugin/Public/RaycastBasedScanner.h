@@ -12,10 +12,6 @@
 
 =============================================================================*/
 
-/*
-**	DISCLAIMER:
-**	I'm using built-in array instead of TArrays because I am working on optimising the tool using SIMD intrinsics
-*/
 
 #pragma once
 
@@ -30,7 +26,7 @@ class RAYCASTSCANNERPLUGIN_API URaycastBasedScanner : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
+	// Constructor. Sets default values for this component's properties
 	URaycastBasedScanner();
 
 	// Called every frame
@@ -65,6 +61,7 @@ public:
 	bool bDebugMetrics{ false };
 
 	// This event can be overriden in the blueprint child and it can be used to set the RTPC with the updated metrics.
+	// It's not meant to have a definition.
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnMetricUpdate();
 
@@ -74,24 +71,27 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	// Find the smallest value of an array
+	// Return the smallest value of an array
 	float FindSmallestValue(const TArray<float>& ArrayOfElements) const;
 
-	// Average the (size - 1) smallest values of the array
+	// Return the average of the (size - 1) smallest values of the array
 	float AverageSmallestValues(const TArray<float>& ArrayOfElements) const;
 
-	// Find the largest value of an array
+	// Return the largest value of an array
 	float FindLargestValue(const TArray<float>& ArrayOfElements) const;
 
-	// Average the (size - 1) largest values of the array
+	// Return the average of the (size - 1) largest values of the array
 	float AverageLargestValues(const TArray<float>& ArrayOfElements) const;
 
-	// Find the avarage of all the elements of the array
+	// Return the avarage of all the elements of the array
 	float AvarageArrayElements(const TArray<float>& ArrayOfElements) const;
+
+	// Return the sum of all the array's elements. Utility function. 
+	float SumArrayElements(const TArray<float>& ArrayOfElements) const;
 
 	void Debug();
 
-	// Location of the owner of this component
+	// Location of the owner
 	FVector OwnerLocation;
 
 	// Location of the owner in the previous calculation. Used to check whether the player has moved or not.
@@ -102,7 +102,7 @@ private:
 
 	/*
 	**	Used to offset the starting angle of the phase. If the offset is 0 the phase would have 0, 120 and 240 angles respectively. 
-	**	If the offset is 90 the phase would have 90, 210 and 330 angles.
+	**	If the offset is 30 the phase would have 30, 150 and 270 angles.
 	*/
 	int AngleOffset{ 0 };
 
@@ -110,35 +110,35 @@ private:
 	FVector RayStartLocation;
 
 	// These will be four elements short history buffers containing the result of each completed phases
-	TArray<float> PessimisticPhasesBuffer{ 0, 0, 0, 0 };
-	TArray<float> OptimisticPhasesBuffer{ 0, 0, 0, 0 };
+	TArray<float> Pessimistic_PhasesBuffer{ 0, 0, 0, 0 };
+	TArray<float> Optimistic_PhasesBuffer{ 0, 0, 0, 0 };
 
 	// Used to write avaraged distances of single phases into the PhasesBuffer.
 	// If PhaseCounter >= 4, the system has calculated four phases 
 	int PhaseCounter{ 0 };
 
 	// Used to smooth out the azimuth value over 16 frames
-	int FrameCounter{ 0 };
+	int SmoothCounter{ 0 };
 
 	// Used to measure even thought the player is not moving.
 	// This will become false once the player has stopped moving AND the system has calculated 16 frames 
 	bool bDoOnce{ true };
 
 	// This is the avarage of the three shortest phases
-	float PessimisticTargetValue{ 0.0f };
+	float Pessimistic_TargetValue{ 0.0f };
 
 	// This is the avarage of the three largest phases
-	float OptimisticTargetValue{ 0.0f };
+	float Optimistic_TargetValue{ 0.0f };
 
 
 	// These will contain last 4 target values. 
 	// They are used to smooth out the final metric over 16 frames
-	TArray<float> PessimisticTargetValues{ 0, 0, 0, 0 };
-	TArray<float> OptimisticTargetValues{ 0, 0, 0, 0 };
+	TArray<float> Pessimistic_TargetValues{ 0, 0, 0, 0 };
+	TArray<float> Optimistic_TargetValues{ 0, 0, 0, 0 };
 
 	// These are the final metric before mapping the values from 0.0 to 1.0
-	float PessimisticAzimuthValueBeforeMapping{ 0.0f };
-	float OptimisticAzimuthValueBeforeMapping{ 0.0f };
+	float Pessimistic_AzimuthValueBeforeMapping{ 0.0f };
+	float Optimistic_AzimuthValueBeforeMapping{ 0.0f };
 
 	// Final metrics
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -154,3 +154,4 @@ private:
 	*/
 	FColor DebugSphereColor{FColor::Black};
 };
+
