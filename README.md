@@ -13,6 +13,12 @@
   * [Using a Blueprint Class](#Using-a-Blueprint-Class)
 - [Modifying the parameters](#modifying-the-parameters)
   * [AzimuthRayLength](#AzimuthRayLength)
+  * [CollisionChannel](#CollisionChannel)
+  * [UpdateInterval](#UpdateInterval)  
+  * [StartingPointOffset](#StartingPointOffset)
+  * [Tolerance](#Tolerance)
+  * [bDebugVisualisation](#bDebugVisualisation)
+  * [bDebugMetrics](#bDebugMetrics)
 - [How to contact me](#how-to-contact-me)
 
 
