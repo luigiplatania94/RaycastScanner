@@ -7,7 +7,7 @@
 - [Supported-Engine-Versions](#Supported-Engine-Versions)
 - [How-to-install-the-Plugin](#How-to-install-the-Plugin)
 - [How-to-use-the-Plugin](#How-to-use-the-Plugin)
-  * [Sub-heading](#sub-heading)
+  * [Using-the-C++-Actor-Component](#Using-the-C++-Actor-Component)
     + [Sub-sub-heading](#sub-sub-heading) 
  
 ## Videos
