@@ -5,7 +5,8 @@
 - [Videos](#Videos)
 - [Description](#Description)
 - [Supported-Engine-Versions](#Supported-Engine-Versions)
-- [How to install the Plugin](#How to install the Plugin )
+- [How-to-install-the-Plugin](#How-to-install-the-Plugin)
+- [How-to-use-the-Plugin](#How-to-use-the-Plugin)
   * [Sub-heading](#sub-heading)
     + [Sub-sub-heading](#sub-sub-heading) 
  
