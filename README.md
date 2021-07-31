@@ -12,7 +12,10 @@
   * [Using the C++ Actor Component](#Using-the-C-Actor-Component)
   * [Using a Blueprint Class](#Using-a-Blueprint-Class)
 - [Modifying the parameters](#modifying-the-parameters)
+  * [AzimuthRayLength](#AzimuthRayLength)
 - [How to contact me](#how-to-contact-me)
+
+
 
  
 ## Videos
