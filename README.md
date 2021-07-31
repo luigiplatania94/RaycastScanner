@@ -5,12 +5,12 @@
 - [Videos](#Videos)
 - [Description](#Description)
 - [Supported Engine Versions](#Supported-Engine-Versions)
-- [How_to_install_the_Plugin](#How-to-install-the-Plugin)
-- [How_to_use_the_Plugin](#How-to-use-the-Plugin)
-  * [Using_the_C++_Actor_Component](#Using-the-C-Actor-Component)
-  * [Using_a_Blueprint_Class](#Using-a-Blueprint-Class)
-- [Modifying_the_parameters](#modifying-the-parameters)
-- [How_to_contact_me](#how-to-contact-me)
+- [How to install the Plugin](#How-to-install-the-Plugin)
+- [How to use the Plugin](#How-to-use-the-Plugin)
+  * [Using the C++ Actor Component](#Using-the-C-Actor-Component)
+  * [Using a Blueprint Class](#Using-a-Blueprint-Class)
+- [Modifying the parameters](#modifying-the-parameters)
+- [How to contact me](#how-to-contact-me)
 
  
 ## Videos
