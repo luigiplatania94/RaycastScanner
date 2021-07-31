@@ -9,8 +9,8 @@
 - [How_to_use_the_Plugin](#How-to-use-the-Plugin)
   * [Using_the_C++_Actor_Component](#Using-the-C-Actor-Component)
   * [Using_a_Blueprint_Class](#Using-a-Blueprint-Class)
-    + [Sub-sub-heading](#sub-sub-heading) 
 - [Modifying_the_parameters](#modifying-the-parameters)
+- [How_to_contact_me](#how-to-contact-me)
 
  
 ## Videos
