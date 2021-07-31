@@ -4,10 +4,11 @@
  
 - [Videos](#Videos)
 - [Description](#Description)
-- [Supported-Engine_Versions](#Supported-Engine-Versions)
+- [Supported_Engine_Versions](#Supported-Engine-Versions)
 - [How_to_install_the_Plugin](#How-to-install-the-Plugin)
 - [How_to_use_the_Plugin](#How-to-use-the-Plugin)
   * [Using_the_C++_Actor_Component](#Using-the-C-Actor-Component)
+  * [Using_a_Blueprint_Class](#Using-a-Blueprint-Class)
     + [Sub-sub-heading](#sub-sub-heading) 
  
 ## Videos
