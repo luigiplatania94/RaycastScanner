@@ -78,6 +78,8 @@ Get the pessimistic and optimistic metric.
 
 Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
 
+![](Documentation/Images/Image05.png)
+
 Once you created the blueprint, go to your Character Bluperint. 
 
 On the Components tab, click the Add Component button in the Components window.
