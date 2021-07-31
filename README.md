@@ -4,10 +4,10 @@
  
 - [Videos](#Videos)
 - [Description](#Description)
-- [Supported-Engine-Versions](#Supported-Engine-Versions)
-- [How-to-install-the-Plugin](#How-to-install-the-Plugin)
-- [How-to-use-the-Plugin](#How-to-use-the-Plugin)
-  * [Using-the-C++-Actor-Component](#Using-the-C-Actor-Component)
+- [Supported-Engine_Versions](#Supported-Engine-Versions)
+- [How_to_install_the_Plugin](#How-to-install-the-Plugin)
+- [How_to_use_the_Plugin](#How-to-use-the-Plugin)
+  * [Using_the_C++_Actor_Component](#Using-the-C-Actor-Component)
     + [Sub-sub-heading](#sub-sub-heading) 
  
 ## Videos
