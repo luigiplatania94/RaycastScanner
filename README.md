@@ -22,7 +22,7 @@
 - [How to contact me](#how-to-contact-me)
 
 
-![](Documentation/Images/Gif01.png)
+![](Documentation/Images/Gif01.gif)
 
  
 ## Videos
