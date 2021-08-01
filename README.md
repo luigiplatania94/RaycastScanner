@@ -22,7 +22,6 @@
 - [How to contact me](#how-to-contact-me)
 
 
-![](Documentation/Images/Gif01.gif)
 
  
 ## Videos
@@ -43,6 +42,8 @@ It has both an Optimistic Metric and a Pessimistic Metric for the Azimuth plane.
 
 It can be used by Sound Designers to change dynamically the soundscape (for example ambiances, weather, weapon tails) or to modify parameters in real-time (for example reverb parameters).
 
+
+![](Documentation/Images/Gif01.gif)
 
 ## Supported Engine Versions
 4.26 
