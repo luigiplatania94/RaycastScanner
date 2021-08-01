@@ -2,6 +2,28 @@
 
 ![](Documentation/Images/Image01.png)
  
+ ## Table of Contents
+ 
+- [Videos](#Videos)
+- [Description](#Description)
+- [Supported Engine Versions](#Supported-Engine-Versions)
+- [How to install the Plugin](#How-to-install-the-Plugin)
+- [How to use the Plugin](#How-to-use-the-Plugin)
+  * [Using the C++ Actor Component](#Using-the-C-Actor-Component)
+  * [Using a Blueprint Class](#Using-a-Blueprint-Class)
+- [Modifying the parameters](#modifying-the-parameters)
+  * [AzimuthRayLength](#AzimuthRayLength)
+  * [CollisionChannel](#CollisionChannel)
+  * [UpdateInterval](#UpdateInterval)  
+  * [StartingPointOffset](#StartingPointOffset)
+  * [Tolerance](#Tolerance)
+  * [bDebugVisualisation](#bDebugVisualisation)
+  * [bDebugMetrics](#bDebugMetrics)
+- [How to contact me](#how-to-contact-me)
+
+
+
+ 
 ## Videos
 
 Demo:
@@ -77,6 +99,8 @@ Get the pessimistic and optimistic metric.
 ![](Documentation/Images/Image03.png)
 
 Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
+
+![](Documentation/Images/Image05.png)
 
 Once you created the blueprint, go to your Character Bluperint. 
 
