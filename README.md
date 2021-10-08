@@ -104,7 +104,7 @@ Set the RTPC on the OnMetricUpdate event. Compile the Blueprint Class.
 
 ![](Documentation/Images/Image05.png)
 
-Once you created the blueprint, go to your Character Bluperint. 
+Once you created the blueprint, go to your Character Blueprint. 
 
 On the Components tab, click the Add Component button in the Components window.
 
