@@ -166,6 +166,7 @@ If TRUE print to the screen both the optimistic and pessimistic metric.
 
 ## How to contact me
 For any feedback please send me an email: 
-luigiplatania94@gmail.com
+info@luigi.software
 
-My website: https://www.luigiplatania.net/
+My website: 
+www.luigi.software
